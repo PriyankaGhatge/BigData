@@ -1,11 +1,10 @@
-/*package collections;
-
-import java.util.*;
+package collections;
 
 public class HashSet {
 
 	public static void main(String[] args) {
-		HashSet hobj= new HashSet();
+		
+		java.util.HashSet<String> hobj = new java.util.HashSet<String>();
 		hobj.add("sunday");
 		hobj.add("monday");
 		hobj.add("tuesday");
@@ -23,4 +22,3 @@ public class HashSet {
 	}
 
 }
-*/
