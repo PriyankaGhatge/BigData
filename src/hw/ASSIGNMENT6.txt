@@ -1,0 +1,85 @@
+﻿ASSIGNMENT 6
+
+
+Q] What is an ArrayList ?
+→ Arraylist is a class which implements List interface. On one hand, it behaves like a normal array,
+providing all the benefits of it and, on the other,it is a generic re-sizable collection implementation 
+of the List interface. Java ArrayList is especially used for managing a large number of objects. 
+
+
+Q] What is an Iterator?
+→  Iterator is a class that has cursor properties.Sothe object of this class acts as a cursor and traverses 
+through a collection accessing each data from it either for obtaining or for deletion of data . 
+For e.g.-You can add or delete a first and last element from an ArrayList.
+
+
+Q] What are characteristics of ArrayList?
+→ 1. Java ArrayList uses an array as the internal programming construct to store elements.
+2.It implements all optional list operations and it also permits all elements, includes null.
+3.It provides methods to manipulate the size of the array that is used internally to store the list.
+4.Java ArrayList class can contain duplicate elements.
+5.Java ArrayList class maintains insertion order.
+6.Java ArrayList class is non synchronized.
+7.Java ArrayList allows random access because array works at the index basis.
+8.In Java ArrayList class, manipulation is slow because a lot of shifting needs to be occurred if any 
+element is removed from the array list.
+
+
+Q]what are advantages of ArrayList?
+→  1.ArrayList can dynamically grow and shrink as per the need.
+2.ArrayList class enables us to use predefined methods of it which makes our task easy.
+3.Elements can be inserted at or deleted from a particular position.
+4.ArrayList class has many methods to manipulate the stored objects( add(), remove()… ).
+5.You can traverse an ArrayList in both the directions – forward and backward using ListIterator.
+hasNext(),hasPrevious().
+
+
+Q]Application of Arraylist in real life software.
+→ You use arrayLists  all of the time in programming. Whenever you need to keep track of an ordered list of items, you'll use an array: a list of songs, a list of each keystroke a user clicks. Even in the JSON data format, you'll often use an arraylist to hold a list of objects.
+
+
+Q] What is a Linked List ?
+→ A linked list is a linear data structure where each element is a separate object.Each element 
+(we will call it a node) of a list is comprising of two items - the data and a reference to the next node. 
+The last node has a reference to null. The entry point into a linked list is called the head of the list.
+It should be noted that head is not a separate node, but the reference to the first node. If the list is 
+empty then the head is a null reference.
+A linked list is a dynamic data structure. The number of nodes in a list is not fixed and can grow and shrink
+on demand. Any application which has to deal with an unknown number of objects will need to use a linked list.
+
+
+
+
+Q] What are characteristics of LinkedList?
+→ 1.Java LinkedList class can contain duplicate elements.
+2.Java LinkedList class maintains insertion order.
+3.Java LinkedList class is non synchronized.
+4.In Java LinkedList class, manipulation is fast because no shifting needs to be occurred.
+5.Java LinkedList class can be used as list, stack or queue.
+
+
+Q]What are advantages of LinkedList?
+→ 1.Insertion and deletion node operations are easily implemented in a linked list.
+2.Dynamic data structures such as stacks and queues can be implemented using a linked list
+3.Backtracking is possible in two way linked list
+4.There is no need to define an initial size for a linked list.
+
+
+Q]Application of Arraylist in real life software.
+→ 1. To implement back functionality in the internet browser. 
+2.To store the possible moves in a chess game.
+3. You have to store social network “feeds”. You do not know the size, and things may need to be dynamically added. 
+
+
+Q]What is the difference between Arraylist and LinkedList ??
+→ 
+ArrayList 
+	LinkedList
+	Maintains indexes and element data
+	Maintains element data and two pointers for neighbor nodes
+	Memory consumption is relatively less
+	Memory consumption is high in LinkedList comparatively
+	In ArrayList all the elements need to be shifted to fill out the space created by removed element.
+	Removal only requires change in the pointer location in the two neighbor nodes (elements) of the node which is going to be removed. 
+	ArrayList maintains index based system for its elements as it uses array data structure 
+	LinkedList implements doubly linked list which requires the traversal through all the elements for searching an element.

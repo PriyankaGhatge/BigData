@@ -1,0 +1,270 @@
+Date:04/04/2017
+1.Arrange array in ascending order
+
+Code:
+
+package arraydemo;
+
+import java.util.Scanner;
+
+
+public class Arraydemo {
+    
+       
+    public static void main(String[] args) {
+        int i,j,temp;
+        Scanner sc=new Scanner(System.in);
+        int a[]=new  int[10];
+        System.out.println("Enter 10 elements into array:");
+        
+    
+        for(i=0;i<10;i++){
+       
+            a[i]=sc.nextInt();
+        
+        }
+        
+        
+        for (i = 0; i < 10; i++) {
+            for (j = i+1; j < 10 ; j++) {
+                if (a[i] > a[j]) {
+
+                    temp = a[i];
+                    a[i] = a[j];
+                    a[j] = temp;
+                }
+            }
+        }
+        System.out.println("Ascending order:");
+        for (i = 0; i < 9; i++) {
+            System.out.println(a[i] + ",");
+        }
+        System.out.println(a[10-1]);
+    }
+    
+}
+
+Output:
+run:
+Enter 10 elements into array:
+9
+8
+7
+6
+5
+4
+3
+2
+1
+2
+Ascending order:
+1,2,2,3,4,5,6,7,8,9
+BUILD SUCCESSFUL (total time: 12 seconds)
+
+2.Print sum and average of 10 numbers entered in array
+
+Code:
+
+package arraydemo;
+
+import java.util.Scanner;
+
+
+public class Arraydemo1 {
+    
+     public static void main(String[] args) {
+    
+     int i,j,sum=0;
+     float avg;
+        Scanner sc=new Scanner(System.in);
+        int a[]=new  int[10];
+        System.out.println("Enter 10 elements into array:");
+        
+        for(i=0;i<10;i++){
+            
+            a[i]=sc.nextInt();
+            sum=sum+a[i];
+            
+        }
+         System.out.println("Sum of all elements is"+sum);
+         avg= (float) sum/10;
+         System.out.println("Average is"+avg);
+        
+     }
+}
+
+
+Output:
+run:
+Enter 10 elements into array:
+9
+8
+7
+6
+5
+4
+3
+3
+2
+1
+Sum of all elements is48
+Average is4.8
+BUILD SUCCESSFUL (total time: 17 seconds)
+
+
+__________________________________________________________________
+__________________________________________________________________
+
+
+Date:05/04/2017
+
+1.Display a 3x3 matrix:
+
+Code:
+
+package matrixdemo;
+
+import java.util.Scanner;
+
+
+public class Matrixdemo {
+    
+    int matrix[][]= new int [3][3];
+        Scanner sc = new Scanner(System.in);
+        
+    void create_matrix(){
+        
+        System.out.println("Enter elements for a 3x3 matrix:");
+        
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                matrix[i][j]=sc.nextInt();
+            }
+        }
+            
+    }
+
+    void display(){
+        
+        System.out.println("The matrix created is :");
+        
+          for(int i=0; i<3; i++) {
+            for(int j=0; j<3; j++) {
+                System.out.print("\t" + matrix[i][j]);
+            }
+                    System.out.println();
+	  }
+	}
+
+
+    
+    public static void main(String[] args) {
+        
+        Matrixdemo obj = new Matrixdemo();
+        obj.create_matrix();
+        obj.display();
+        
+    }
+    
+}
+
+
+Output:
+run:
+Enter elements for a 3x3 matrix:
+
+9
+9
+8
+7
+6
+5
+4
+3
+2
+The matrix created is :
+	9	9	8
+	7	6	5
+	4	3	2
+BUILD SUCCESSFUL (total time: 24 seconds)
+
+2.Display sum of 2 3x3 matrices
+
+Code:
+
+package matrixdemo;
+
+import java.util.Scanner;
+
+public class matrixdemo1 {
+     public static void main(String args[]){
+    //int a,b;
+    Scanner sc = new Scanner(System.in);
+    
+    int m1[][] = new int[3][3];
+    int m2[][] = new int[3][3];
+    int sum[][] = new int[3][3];
+    
+    System.out.println("Enter elements for first 3x3 matrix");
+  
+      for (int a=0; a<3; a++){
+         for (int b=0; b<3; b++){
+            m1[a][b] = sc.nextInt();
+         }
+}
+ 
+      System.out.println("Enter elements for second 3x3 matrix" );
+      for (int a=0; a<3; a++){
+         for (int b=0; b<3; b++){
+            m2[a][b] = sc.nextInt();
+         }
+        }
+
+       for (int a=0; a<3; a++){
+         for (int b=0; b<3; b++){
+             sum[a][b] = m1[a][b] + m2[a][b];
+            }
+        }
+       
+      System.out.println("The sum of 2 matrices is :");
+ 
+      for (int a=0; a<3; a++)
+      {
+         for (int b=0; b<3; b++){
+            System.out.print(sum[a][b]+"\t");
+         }
+         System.out.println();
+      }
+}
+}
+
+
+
+Output:
+run:
+Enter elements for first 3x3 matrix
+1
+2
+3
+4
+5
+6
+7
+8
+9
+Enter elements for second 3x3 matrix
+1
+2
+3
+4
+5
+6
+7
+8
+9
+The sum of 2 matrices is :
+2	4	6	
+8	10	12	
+14	16	18	
+BUILD SUCCESSFUL (total time: 15 seconds)
+

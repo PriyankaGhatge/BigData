@@ -1,0 +1,120 @@
+﻿ASSIGNMENT 5
+
+
+Date:06/04/2017
+
+
+Q] What is a constructor? What is it’s use ?
+
+
+→ A constructor is a special kind of method used to initialize all class level variables. A constructor is an instance method that usually has the same name as the class.It  gets called automatically when an object of class is created.
+
+
+    A constructor allows you to provide initial values for class fields when you create the object.it can be used to set the values of the members of an object, either to default or to user-defined values.
+
+
+Q] What is a parameterised constructor ?
+
+
+→A  type of constructor which has some Arguments and same name as class name but it uses some Arguments. In this type of constructor we have to create object of Class by passing some Arguments at the time of creating object with the name of class.
+
+
+        When we pass some Arguments to the Constructor it  will automatically pass the Arguments to the Constructor and the values will retrieve by the Respective Data Members of the Class.
+
+Q] What are the rules to be followed while using constructor ?
+
+
+→ 
+* The name of the constructor must be the same as the name of the class.
+* A constructor is called automatically when we create object of that class.
+* Constructor does not return any value,so we don’t need to use any return type.
+* Compiler provides you one default constructor that has all class variables with their value set as  default value.
+* When we declare parameterised constructor , default constructor gets destroyed.
+
+
+
+
+Q] What is function overriding ? Why is it required and How is it implemented?
+
+
+→ Function Overriding means, giving a different definition of an existing function with same parameters.It basically means that a function has same structure both in base and derived/child class.it occurs when one class inherits from another class.
+
+
+        It is used when a class that extends from another class wants to use most of the feature of the parent class and wants to implement specific functionality in certain cases.
+
+
+Overriding is a feature that is available while using Inheritance.In such cases we can create methods with the same name and signature as in the parent class. This way the new method masks the parent method and would get invoked by default.Overriding is only possible with inheritance and dynamic binding – without inheritance there is no overriding.
+
+
+
+
+Q] What is function overloading ? Why is it required and How is it implemented?
+
+
+→ Function Overloading occurs when two or more methods in one class have the same method name but different parameters. It is a feature that allows a class to have two or more methods having same name, if their argument lists are different.The decision on which function to use (overload resolution) is done by the compiler when the program is compiled. 
+
+
+ Argument lists could differ in –
+1. Number of parameters.
+2. Data type of parameters.
+3. Sequence of Data type of parameters.
+
+
+It is used to  avoid using  different functions for the same functionality, which is confusing, also it allows the programmer to write functions to do conceptually the same thing on different types of data without changing the name
+
+
+It can be achieved by creating 2 methods having same name but passing different parameters.
+There are two ways to overload the method in java
+1. By changing number of arguments
+2. By changing the data type
+
+
+Q]What is inheritance ? How is it implemented ?
+→ Inheritance allows a class to use the properties and methods of another class. In other words, the derived class inherits the states and behaviors from the base class. The derived class is also called subclass and the base class is also known as super-class. The derived class can add its own additional variables and methods. These additional variable and methods differentiates the derived class from the base class.
+
+
+Inheritance is a feature of OOPS that enables code re-usability..it helps programmers establish a Is-a relationship between different categories.
+To implement inheritance we use a keyword called  extends.
+
+
+Public ChildClass extends BaseClass{
+  // derived class methods extend or override…
+}
+The example given below...helps us understand…..A car is a vehicle and  truck is a vehicle….A minivan transporting kids is a car which is a vehicle…….Also a garbage truck is a truck which is a vehicle……..
+
+
+
+
+Q] How to inherit class and how to inherit an interface ?
+→ 
+Inheritance is a feature of OOPS that enables code re-usability..it helps programmers establish a Is-a relationship between different categories.
+For e.g. - A car is a vehicle used for transporting people while a truck is vehicle used for hauling heavy items.Both are vehicles having some basic resemblance to the property of transporting and are different in their property of capacity. So here Vehicle becomes the base/parent class whose properties are inherited by the car and truck forming the derived/child class.
+
+
+Java allows inheritance through class extension, in which one class (child)directly inherits accessible fields and methods from another class(parent) by extending that class. Java supports class extension via the extends keyword.
+
+
+class Vehicle
+{
+  // member declarations
+}
+class Car extends Vehicle
+{
+  // inherit accessible members from Vehicle
+  // provide own member declarations
+}
+
+
+The interface in java is a mechanism to achieve abstraction.There can only be abstract methods in java interface not abstract body. It is used to achieve multiple inheritance and abstraction in java.
+While inheriting a class extends a class...an interface extends an interface...but a class implements an interface. If we want to inherit an interface we should follow the guidelines above.A class that implements an interface must implement all of the methods described in the interface, or be an abstract class.
+
+
+
+
+Q]What is an interface?How is it different from abstract class?
+→ 
+* An interface is a reference type in Java.It is similar to class. It is a collection of abstract methods. A class implements an interface, thereby inheriting the abstract methods of the interface.
+* Abstract classes are classes that contain one or more abstract methods. An abstract method is a method that is declared, but contains no implementation.
+* Interface can extend any number of interfaces at a time unlike abstract classes which can extend only one abstract class or class at  a time 
+* Interface can have only public abstract methods i.e. by default while abstract  class can have  protected , public and public abstract methods.
+* Interface can extend only from an interface and  can  have only abstract methods while abstract  class  can  have  both  abstract and concrete methods and  class  can extend from a class or from an abstract class

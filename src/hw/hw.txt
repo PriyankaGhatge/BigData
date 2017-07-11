@@ -1,0 +1,210 @@
+ASSIGNMENT 10
+=============================================================================
+
+package hw;
+
+import java.util.Scanner;
+
+public class Genericex {
+
+	 
+    public static void main(String[] args) {
+        
+    double sal;
+    int age;
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter age and salary of employee: ");
+   
+             age = sc.nextInt();
+             sal = sc.nextDouble();
+    Employee<Integer,Double> data = new Employee(age, sal);
+    data.show();
+      
+    }
+         
+static class Employee<age,salary>{
+            int age;
+            double salary;
+
+
+        public Employee(int age,double salary)
+    {
+        this.age = age;
+        this.salary = salary;
+    }
+
+         void show()
+    {
+        
+    System.out.println("Age is" +age);
+    System.out.println("salary is "+salary);
+    
+    }
+
+  }
+}
+
+Output:
+Enter age and salary of employee: 
+25 45000
+Age is25
+salary is 45000.0
+
+==================================================================================
+package hw;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+public class HashMapex {
+	
+	public static void main(String[] args) {
+		
+	
+	HashMap<Integer, Employee> empDetails = new HashMap<Integer,Employee>();
+	
+	Employee e1 = new Employee("Govind",25000,23);
+	Employee e2 = new Employee("Purab",55000,32);
+	Employee e3 = new Employee("Sayli",35000,25);
+	Employee e4 = new Employee("Atul",100000,45);
+	Employee e5 = new Employee("Sneha",50000,30);
+	
+	empDetails.put(1, e1);
+	empDetails.put(2, e2);
+	empDetails.put(3, e3);
+	empDetails.put(4, e4);
+	empDetails.put(5, e5);
+	
+	for(Map.Entry<Integer, Employee>data :empDetails.entrySet()){
+		int key = data.getKey();
+		Employee e = data.getValue();
+		
+		System.out.println("Name is "+e.name);
+		System.out.println("Salary is "+e.id);
+		System.out.println("Age is "+e.age);
+		}
+	
+	empDetails.remove(3);
+	for(Map.Entry<Integer, Employee>data :empDetails.entrySet()){
+		int key = data.getKey();
+		Employee e = data.getValue();
+		System.out.println("------------------------------");
+		System.out.println("Name is "+e.name);
+		System.out.println("Salary is "+e.id);
+		System.out.println("Age is "+e.age);
+		}
+	
+	empDetails.replace(3, e4);
+	System.out.println("Records after replacing"+empDetails);
+	
+	
+	class Employee{
+		private String name;
+		private int sal;
+		private int age;
+		   
+		    
+		    public Employee(String name, int sal, int age)
+		    {
+		        this.name = name;
+		        this.sal = sal;
+		        this.age = age;
+		    }
+		    
+		    public String toString()
+		    {
+		        return name + " " + sal + " " + age;
+		    }
+		}
+	
+}
+}
+
+Output:
+Name is Govind
+Salary is 25000
+Age is 23
+Name is Purab
+Salary is 55000
+Age is 32
+Name is Sayli
+Salary is 35000
+Age is 25
+Name is Atul
+Salary is 100000
+Age is 45
+Name is Sneha
+Salary is 50000
+Age is 30
+------------------------------
+Name is Govind
+Salary is 25000
+Age is 23
+------------------------------
+Name is Purab
+Salary is 55000
+Age is 32
+------------------------------
+Name is Atul
+Salary is 100000
+Age is 45
+------------------------------
+Name is Sneha
+Salary is 50000
+Age is 30
+Records after replacing{1=Govind 25000 23, 2=Purab 55000 32, 4=Atul 100000 45, 5=Sneha 50000 30}
+
+=======================================================================================================
+
+package hw;
+
+import java.util.TreeSet;
+
+public class TreeSetex {
+
+	public static void main(String[] args) {
+		
+		
+		TreeSet<Employee> emp = new TreeSet<Employee>(); 
+		
+        emp.add(new Employee("Sreeram", 101, 45));
+        emp.add(new Employee("Karthik", 103, 23));
+        emp.add(new Employee("Ram", 102, 32));
+        emp.add(new Employee("Yusmitha", 105, 29));
+        emp.add(new Employee("Bhavya", 104, 60));
+        
+       System.out.println(emp); 
+       TreeSet newemp = (TreeSet) emp.clone();
+    
+    }
+}
+
+class Employee implements Comparable<Employee>
+{
+    String name;
+    int id;
+    int age;
+    
+    public Employee(String name, int id, int age)
+    {
+        this.name = name;
+        this.id = id;
+        this.age = age;
+    }
+    
+    public String toString()
+    {
+        return name + " " + id + " " + age;
+    }
+    
+    public int compareTo(Employee o)
+    {
+    
+        return id - o.id;
+    }
+	}
+
+	
+Output:
+[Sreeram 101 45, Ram 102 32, Karthik 103 23, Bhavya 104 60, Yusmitha 105 29]

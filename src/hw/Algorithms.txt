@@ -1,0 +1,190 @@
+
+
+Date=29/03/2017
+
+
+Algo1
+
+1-Start
+2-Take Student details (Id, Name,DOB,Marks of 3 subjects)
+3-From the DOB check if age is 21 years
+4-Calculate average percentage of all 3 subjects 
+5-Count students with  age > 21 and avg % >=80 
+6-Print the count
+7-Stop
+
+
+_________________________________________________________________________________________________
+_________________________________________________________________________________________________
+
+Algo2
+
+1-Start
+2-Collect details from passenger like (PNR,Name,Flight Date, Flight no,Flight time)
+3-From the Flight date of that particular passenger check if he/she has travelled for more 
+	than 3 times in 3 months from his first flight date to last flight date
+4-If he/she has travelled then that particular passenger will be awarded frequent flyer status
+	along with 10% discount on next flight
+5-Stop
+
+__________________________________________________________________________________________________
+__________________________________________________________________________________________________
+
+
+Algo3
+
+Part1
+
+1-Start
+2-Collect Details of Customer (Id,Name,DOB,Profession,Income,Country,City,Product name, Product qty,
+	product id, product price,Purchase date)
+3-From purchase date of that customer check the total sales between 25/12 to 1/1
+4-To calculate the total sales for that customer use formula 
+  	Sales= Product qty*Product price
+5- Print the total sales between those days
+6-Stop
+
+---------------------------------------------------------------------------------------------------
+
+Part2
+
+1-Start
+2-For that particular customer calculate age from DOB
+3-Compare sales of all  the customers 
+4-Print The age of customer with maximum sales
+5-Stop
+
+---------------------------------------------------------------------------------------------------
+
+Part3
+
+1-Start
+2-Compare sales of every customer
+3-Print Country of customer with max sales
+4-Stop
+
+---------------------------------------------------------------------------------------------------
+
+Part4
+
+1-Start
+2-Count customers having income >=1lakh
+3-Calculate their sales 
+4-Print them sale wise in ascending order
+5-Stop
+
+---------------------------------------------------------------------------------------------------
+
+Part5
+
+1-Start
+2-Compare sales of all customers to find minimum sales value
+3-Print Profession of customer with min sales
+4-Stop
+
+---------------------------------------------------------------------------------------------------
+
+Part6
+
+1-Start
+2-categorise users into different age groups 18-25, 26- 35, 36-45....so on...
+3-From their DOB calculate their age and put them in respective age groups
+4-Now check their purchase date
+5-Print the age group which shopped between 25/12 and 1/1
+6-Stop
+
+___________________________________________________________________________________________________
+___________________________________________________________________________________________________
+
+Algo4
+
+Part1
+
+1-Start
+2-Collect Distributor Details (ID,Name,Oil alotted/month, Oil sold,oil allotment)
+3-Check for distributer with maximum oil alotted per month
+4-Print the Distributor details
+5-Stop
+
+---------------------------------------------------------------------------------------------------
+
+Part2
+
+1-start
+2-Collect Distributor Details (ID,Name,Oil alotted/month, Oil sold,oil allotment)
+3-Check for distributer who sold max oil in that month
+4-Print the Distributor details
+5-Stop
+
+---------------------------------------------------------------------------------------------------
+
+Part3
+
+1-Start
+2-Collect Distributor Details (ID,Name,Oil alotted/month, Oil sold,oil allotment)
+3-Check for distributer who sold 50% of  oil alotted in that month
+4-Print the Distributor details
+5-Stop
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+
+
+
+
+Date=30/03/2017
+
+
+Q]What is Object Oriented Programming ?
+
+-->It is a programming model based upon objects. Wherein object contain methods and data and this 
+object is an intance of a class.  
+
+
+Q]What is modular programming ?
+
+-->Technique of Programming where a program is divided into different modules. Each module performs a
+ specific task of executing a single fuctionality. The program contains multiple such independent modules.
+
+Q]What is array?
+
+-->An array is a collection of elements with the same datatype.An array stores multiple values with 1 
+ variable.It stores data in continuous memory location .
+
+Q]What is an Access specifier ?
+
+-->Specifiers mention whwether a method in class can be accessed by other methods in other classes. 
+Access specifier mention the visibility scope of that methods/classes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

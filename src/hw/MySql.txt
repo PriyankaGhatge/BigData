@@ -1,0 +1,1210 @@
+MYSQL HOMEWORK:
+
+Salespeople Table:
+
++------+----------+---------------+-------+
+| snum | sname    | city          | comm  |
++------+----------+---------------+-------+
+| 1001 | Priyanka | London        | 12.00 |
+| 1002 | Sneha    | Mumbai        | 19.00 |
+| 1003 | Pablo    | Colombia      | 13.00 |
+| 1004 | Sam      | San Francisco | 15.00 |
+| 1005 | Lily     | LA            | 16.00 |
+| 1006 | Dean     | New York      | 21.00 |
+| 1007 | Aditya   | Delhi         | 25.00 |
++------+----------+---------------+-------+
+
+Customer Table:
+
++------+---------+------------+--------+------+
+| cnum | cname   | city       | rating | snum |
++------+---------+------------+--------+------+
+| 2001 | Ilya    | Russia     |    100 | 1003 |
+| 2002 | Jason   | Berlin     |    200 | 1006 |
+| 2003 | Jared   | Chicago    |    150 | 1001 |
+| 2004 | Tony    | Goa        |    250 | 1005 |
+| 2005 | Danny   | Texas      |    199 | 1004 |
+| 2006 | Anna    | New Mexico |    110 | 1003 |
+| 2007 | Charlie | San Diego  |    210 | 1005 |
++------+---------+------------+--------+------+
+
+
+
+Orders Table:
+
++------+---------+------------+------+
+| onum | amt     | odate      | cnum |
++------+---------+------------+------+
+| 3001 |  156.87 | 1998-12-06 | 2001 |
+| 3002 |  576.98 | 1989-05-06 | 2002 |
+| 3003 |  321.23 | 1996-12-11 | 2003 |
+| 3004 |  116.98 | 1987-09-16 | 2004 |
+| 3005 |  456.23 | 1994-10-18 | 2007 |
+| 3006 |  986.18 | 1987-04-25 | 2005 |
+| 3007 |  231.98 | 1999-03-06 | 2001 |
+| 3008 |  234.86 | 1998-12-06 | 2001 |
+| 3009 |  736.98 | 1995-09-30 | 2007 |
+| 3010 | 7000.00 | 1999-10-30 | 2004 |
++------+---------+------------+------+
+
+
+=========================================================================================================
+
+
+1-desc salespeople;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| snum  | int(11)      | NO   | PRI | NULL    |       |
+| sname | varchar(30)  | NO   |     | NULL    |       |
+| city  | varchar(30)  | NO   |     | NULL    |       |
+| comm  | decimal(4,2) | NO   |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+2-select * from customer where rating=100;
++------+-------+--------+--------+------+
+| cnum | cname | city   | rating | snum |
++------+-------+--------+--------+------+
+| 2001 | Ilya  | Russia |    100 | 1003 |
++------+-------+--------+--------+------+
+3-select * from customer having city=null;
+Empty set (0.01 sec)
+
+4-select b.snum , a.odate ,  max(a.amt)from orders a,customer b group by snum,odate;
++------+------------+------------+
+| snum | odate      | max(a.amt) |
++------+------------+------------+
+| 1001 | 1987-04-25 |     986.18 |
+| 1001 | 1987-09-16 |     116.98 |
+| 1001 | 1989-05-06 |     576.98 |
+| 1001 | 1994-10-18 |     456.23 |
+| 1001 | 1995-09-30 |     736.98 |
+| 1001 | 1996-12-11 |     321.23 |
+| 1001 | 1998-12-06 |     234.86 |
+| 1001 | 1999-03-06 |     231.98 |
+| 1001 | 1999-10-30 |    7000.00 |
+| 1003 | 1987-04-25 |     986.18 |
+| 1003 | 1987-09-16 |     116.98 |
+| 1003 | 1989-05-06 |     576.98 |
+| 1003 | 1994-10-18 |     456.23 |
+| 1003 | 1995-09-30 |     736.98 |
+| 1003 | 1996-12-11 |     321.23 |
+| 1003 | 1998-12-06 |     234.86 |
+| 1003 | 1999-03-06 |     231.98 |
+| 1003 | 1999-10-30 |    7000.00 |
+| 1004 | 1987-04-25 |     986.18 |
+| 1004 | 1987-09-16 |     116.98 |
+| 1004 | 1989-05-06 |     576.98 |
+| 1004 | 1994-10-18 |     456.23 |
+| 1004 | 1995-09-30 |     736.98 |
+| 1004 | 1996-12-11 |     321.23 |
+| 1004 | 1998-12-06 |     234.86 |
+| 1004 | 1999-03-06 |     231.98 |
+| 1004 | 1999-10-30 |    7000.00 |
+| 1005 | 1987-04-25 |     986.18 |
+| 1005 | 1987-09-16 |     116.98 |
+| 1005 | 1989-05-06 |     576.98 |
+| 1005 | 1994-10-18 |     456.23 |
+| 1005 | 1995-09-30 |     736.98 |
+| 1005 | 1996-12-11 |     321.23 |
+| 1005 | 1998-12-06 |     234.86 |
+| 1005 | 1999-03-06 |     231.98 |
+| 1005 | 1999-10-30 |    7000.00 |
+| 1006 | 1987-04-25 |     986.18 |
+| 1006 | 1987-09-16 |     116.98 |
+| 1006 | 1989-05-06 |     576.98 |
+| 1006 | 1994-10-18 |     456.23 |
+| 1006 | 1995-09-30 |     736.98 |
+| 1006 | 1996-12-11 |     321.23 |
+| 1006 | 1998-12-06 |     234.86 |
+| 1006 | 1999-03-06 |     231.98 |
+| 1006 | 1999-10-30 |    7000.00 |
++------+------------+------------+
+
+
+5-select * from orders order by cnum desc;
++------+---------+------------+------+
+| onum | amt     | odate      | cnum |
++------+---------+------------+------+
+| 3005 |  456.23 | 1994-10-18 | 2007 |
+| 3009 |  736.98 | 1995-09-30 | 2007 |
+| 3006 |  986.18 | 1987-04-25 | 2005 |
+| 3004 |  116.98 | 1987-09-16 | 2004 |
+| 3010 | 7000.00 | 1999-10-30 | 2004 |
+| 3003 |  321.23 | 1996-12-11 | 2003 |
+| 3002 |  576.98 | 1989-05-06 | 2002 |
+| 3001 |  156.87 | 1998-12-06 | 2001 |
+| 3007 |  231.98 | 1999-03-06 | 2001 |
+| 3008 |  234.86 | 1998-12-06 | 2001 |
++------+---------+------------+------+
+6- select a.onum,b.cname,c.sname from orders a,customer b,salespeople c where a.cnum=b.cnum and b.snum=c.snum;
++------+---------+----------+
+| onum | cname   | sname    |
++------+---------+----------+
+| 3001 | Ilya    | Pablo    |
+| 3007 | Ilya    | Pablo    |
+| 3008 | Ilya    | Pablo    |
+| 3002 | Jason   | Dean     |
+| 3003 | Jared   | Priyanka |
+| 3004 | Tony    | Lily     |
+| 3010 | Tony    | Lily     |
+| 3006 | Danny   | Sam      |
+| 3005 | Charlie | Lily     |
+| 3009 | Charlie | Lily     |
++------+---------+----------+
+7-select c.cnum,c.cname,s.snum,s.sname from customer c,salespeople s where c.snum=s.snum;
++------+---------+------+----------+
+| cnum | cname   | snum | sname    |
++------+---------+------+----------+
+| 2001 | Ilya    | 1003 | Pablo    |
+| 2002 | Jason   | 1006 | Dean     |
+| 2003 | Jared   | 1001 | Priyanka |
+| 2004 | Tony    | 1005 | Lily     |
+| 2005 | Danny   | 1004 | Sam      |
+| 2006 | Anna    | 1003 | Pablo    |
+| 2007 | Charlie | 1005 | Lily     |
++------+---------+------+----------+
+8-select b.sname, count(a.cnum)from customer a,salespeople b where a.snum=b.snum group by b.snum;
++----------+---------------+
+| sname    | count(a.cnum) |
++----------+---------------+
+| Priyanka |             1 |
+| Pablo    |             2 |
+| Sam      |             1 |
+| Lily     |             2 |
+| Dean     |             1 |
++----------+---------------+
+9-select count(a.onum),b.snum from orders a,customer b where a.cnum=b.cnum group by b.snum;
++---------------+------+
+| count(a.onum) | snum |
++---------------+------+
+|             1 | 1001 |
+|             3 | 1003 |
+|             1 | 1004 |
+|             4 | 1005 |
+|             1 | 1006 |
++---------------+------+
+10-select * from customer where city='New Mexico';
++------+-------+------------+--------+------+
+| cnum | cname | city       | rating | snum |
++------+-------+------------+--------+------+
+| 2006 | Anna  | New Mexico |    110 | 1003 |
++------+-------+------------+--------+------+
+11-
+ select a.cname,b.sname,b.city from customer a,salespeople b where a.snum=b.snum;
++---------+----------+---------------+
+| cname   | sname    | city          |
++---------+----------+---------------+
+| Ilya    | Pablo    | Colombia      |
+| Jason   | Dean     | New York      |
+| Jared   | Priyanka | London        |
+| Tony    | Lily     | LA            |
+| Danny   | Sam      | San Francisco |
+| Anna    | Pablo    | Colombia      |
+| Charlie | Lily     | LA            |
++---------+----------+---------------+
+12-select b.snum, max(a.amt) from orders a, customer b where a.cnum=b.cnum group by b.snum;
++------+------------+
+| snum | max(a.amt) |
++------+------------+
+| 1001 |     321.23 |
+| 1003 |     234.86 |
+| 1004 |     986.18 |
+| 1005 |    7000.00 |
+| 1006 |     576.98 |
++------+------------+
+13-select * from customer where city ='New Mexico' having rating>200;
+Empty set (0.03 sec)
+
+14-select sname,comm from salespeople where city ='LA';
++-------+-------+
+| sname | comm  |
++-------+-------+
+| Lily  | 16.00 |
++-------+-------+
+15-select a.onum, c.sname from orders a,customer b,salespeople c where a.cnum=b.cnum and b.snum=c.snum and c.sname="pablo";
++------+-------+
+| onum | sname |
++------+-------+
+| 3001 | Pablo |
+| 3007 | Pablo |
+| 3008 | Pablo |
++------+-------+
+16-
+ select * from customer a, orders b where a.cnum=b.cnum having b.odate="1987-4-25";
++------+-------+-------+--------+------+------+--------+------------+------+
+| cnum | cname | city  | rating | snum | onum | amt    | odate      | cnum |
++------+-------+-------+--------+------+------+--------+------------+------+
+| 2005 | Danny | Texas |    199 | 1004 | 3006 | 986.18 | 1987-04-25 | 2005 |
++------+-------+-------+--------+------+------+--------+------------+------
+17-
+select sum(amt) as "Total",odate from orders group by odate having total>200;
++---------+------------+
+| Total   | odate      |
++---------+------------+
+|  986.18 | 1987-04-25 |
+|  576.98 | 1989-05-06 |
+|  456.23 | 1994-10-18 |
+|  736.98 | 1995-09-30 |
+|  321.23 | 1996-12-11 |
+|  391.73 | 1998-12-06 |
+|  231.98 | 1999-03-06 |
+| 7000.00 | 1999-10-30 |
++---------+------------+
+18- select * from orders where amt>(select min(amt) from orders where odate="1994-10-18 ");
++------+---------+------------+------+
+| onum | amt     | odate      | cnum |
++------+---------+------------+------+
+| 3002 |  576.98 | 1989-05-06 | 2002 |
+| 3006 |  986.18 | 1987-04-25 | 2005 |
+| 3009 |  736.98 | 1995-09-30 | 2007 |
+| 3010 | 7000.00 | 1999-10-30 | 2004 |
++------+---------+------------+------+
+19-select * from salespeople where exists(select rating from customer where customer.snum=salespeople.snum and rating >200);
++------+-------+------+-------+
+| snum | sname | city | comm  |
++------+-------+------+-------+
+| 1005 | Lily  | LA   | 16.00 |
++------+-------+------+-------+
+20-select c1.cname,c1.rating,c2.cname from customer c1 join customer c2 on c1.rating=c2.rating;
++---------+--------+---------+
+| cname   | rating | cname   |
++---------+--------+---------+
+| Ilya    |    100 | Ilya    |
+| Jason   |    200 | Jason   |
+| Jared   |    150 | Jared   |
+| Tony    |    250 | Tony    |
+| Danny   |    199 | Danny   |
+| Anna    |    110 | Anna    |
+| Charlie |    210 | Charlie |
++---------+--------+---------+
+21-select * from customer where cnum>(select (1000+snum)from salespeople where sname="Sam");
++------+---------+------------+--------+------+
+| cnum | cname   | city       | rating | snum |
++------+---------+------------+--------+------+
+| 2005 | Danny   | Texas      |    199 | 1004 |
+| 2006 | Anna    | New Mexico |    110 | 1003 |
+| 2007 | Charlie | San Diego  |    210 | 1005 |
++------+---------+------------+--------+------+
+22-select snum,sname,(100*comm)+'%' as percentage from salespeople;
++------+----------+------------+
+| snum | sname    | percentage |
++------+----------+------------+
+| 1001 | Priyanka |       1200 |
+| 1002 | Sneha    |       1900 |
+| 1003 | Pablo    |       1300 |
+| 1004 | Sam      |       1500 |
+| 1005 | Lily     |       1600 |
+| 1006 | Dean     |       2100 |
+| 1007 | Aditya   |       2500 |
++------+----------+------------+
+23-
+select b.snum,max(a.amt)from orders a,customer b where a.cnum=b.cnum group by b.snum having max(a.amt)>300;
++------+------------+
+| snum | max(a.amt) |
++------+------------+
+| 1001 |     321.23 |
+| 1004 |     986.18 |
+| 1005 |    7000.00 |
+| 1006 |     576.98 |
++------+------------+
+24-select * from customer where snum=(select snum from salespeople where sname='Lily');
++------+---------+-----------+--------+------+
+| cnum | cname   | city      | rating | snum |
++------+---------+-----------+--------+------+
+| 2004 | Tony    | Goa       |    250 | 1005 |
+| 2007 | Charlie | San Diego |    210 | 1005 |
++------+---------+-----------+--------+------+
+25-select * from customer c where c.city in (select c.city from salespeople s,customer c where c.snum=s.snum and sname='sam');
++------+-------+-------+--------+------+
+| cnum | cname | city  | rating | snum |
++------+-------+-------+--------+------+
+| 2005 | Danny | Texas |    199 | 1004 |
++------+-------+-------+--------+------+
+
+26-select * from customer having rating > 200;
++------+---------+-----------+--------+------+
+| cnum | cname   | city      | rating | snum |
++------+---------+-----------+--------+------+
+| 2004 | Tony    | Goa       |    250 | 1005 |
+| 2007 | Charlie | San Diego |    210 | 1005 |
++------+---------+-----------+--------+------+
+
+27-select count(distinct(c.snum))from customer c,orders o where c.cnum=o.cnum;
++-------------------------+
+| count(distinct(c.snum)) |
++-------------------------+
+|                       5 |
++-------------------------+
+
+
+28- select cname,comm from customer a, salespeople b where a.snum=b.d b.comm>12.0;
++---------+-------+
+| cname   | comm  |
++---------+-------+
+| Ilya    | 13.00 |
+| Anna    | 13.00 |
+| Danny   | 15.00 |
+| Tony    | 16.00 |
+| Charlie | 16.00 |
+| Jason   | 21.00 |
++---------+-------+
+29- select s.snum,count(c.cnum)as 'CustomerCount 'from salespeople s,customer c where c.snum=s.snum group by s.snum having count(c.cnum)>1;
++------+----------------+
+| snum | CustomerCount  |
++------+----------------+
+| 1003 |              2 |
+| 1005 |              2 |
++------+----------------+
+
+
+30-select s.snum,s.sname,s.city as SaleCity,c.cnum,c.cname,c.city as CustomerCity from salespeople s,customer c where c.snum=s.snum and s.city=c.city;
+Empty set (0.01 sec)
+
+
+31-select * from salespeople where sname like 'P__L%';
++------+-------+----------+-------+
+| snum | sname | city     | comm  |
++------+-------+----------+-------+
+| 1003 | Pablo | Colombia | 13.00 |
++------+-------+----------+-------+
+32-select * from orders where cnum=(select cnum from customer where cname='jared');
++------+--------+------------+------+
+| onum | amt    | odate      | cnum |
++------+--------+------------+------+
+| 3003 | 321.23 | 1996-12-11 | 2003 |
++------+--------+------------+------+
+33-
+select s.sname,max(o.amt) from salespeople s,customer c,orders o where s.snum=c.snum and c.cnum=o.cnum and s.sname in ('Sam','Dean') group by s.snum;
++-------+------------+
+| sname | max(o.amt) |
++-------+------------+
+| Sam   |     986.18 |
+| Dean  |     576.98 |
++-------+------------+
+34-select s.snum as SNUM,s.sname as SNAME, s.comm as COMMISION,s.city as CITY from salespeople s;
++------+----------+-----------+---------------+
+| SNUM | SNAME    | COMMISION | CITY          |
++------+----------+-----------+---------------+
+| 1001 | Priyanka |     12.00 | London        |
+| 1002 | Sneha    |     19.00 | Mumbai        |
+| 1003 | Pablo    |     13.00 | Colombia      |
+| 1004 | Sam      |     15.00 | San Francisco |
+| 1005 | Lily     |     16.00 | LA            |
+| 1006 | Dean     |     21.00 | New York      |
+| 1007 | Aditya   |     25.00 | Delhi         |
++------+----------+-----------+---------------+
+35- select * from customer c where substr(c.cname,1,1)between 'A' and 'G';
++------+---------+------------+--------+------+
+| cnum | cname   | city       | rating | snum |
++------+---------+------------+--------+------+
+| 2005 | Danny   | Texas      |    199 | 1004 |
+| 2006 | Anna    | New Mexico |    110 | 1003 |
+| 2007 | Charlie | San Diego  |    210 | 1005 |
++------+---------+------------+--------+------+
+36-
+37-select * from orders where odate like '%-4-10' having amt >(select avg(amt)from orders);
+
+38- select a.cnum,a.cname from customer a where a.rating=(select max(rating)from customer b where a.city=b.city);
++------+---------+
+| cnum | cname   |
++------+---------+
+| 2001 | Ilya    |
+| 2002 | Jason   |
+| 2003 | Jared   |
+| 2004 | Tony    |
+| 2005 | Danny   |
+| 2006 | Anna    |
+| 2007 | Charlie |
++------+---------+
+39-
+select s.odate,sum(s.amt)as Amount from orders s group by s.odate order by Amount desc;
++------------+---------+
+| odate      | Amount  |
++------------+---------+
+| 1999-10-30 | 7000.00 |
+| 1987-04-25 |  986.18 |
+| 1995-09-30 |  736.98 |
+| 1989-05-06 |  576.98 |
+| 1994-10-18 |  456.23 |
+| 1998-12-06 |  391.73 |
+| 1996-12-11 |  321.23 |
+| 1999-03-06 |  231.98 |
+| 1987-09-16 |  116.98 |
++------------+---------+
+40- select * from orders o where amt<(select max(amt) from customer c,orders o where c.city='Texas' and c.cnum=o.cnum);
++------+--------+------------+------+
+| onum | amt    | odate      | cnum |
++------+--------+------------+------+
+| 3001 | 156.87 | 1998-12-06 | 2001 |
+| 3002 | 576.98 | 1989-05-06 | 2002 |
+| 3003 | 321.23 | 1996-12-11 | 2003 |
+| 3004 | 116.98 | 1987-09-16 | 2004 |
+| 3005 | 456.23 | 1994-10-18 | 2007 |
+| 3007 | 231.98 | 1999-03-06 | 2001 |
+| 3008 | 234.86 | 1998-12-06 | 2001 |
+| 3009 | 736.98 | 1995-09-30 | 2007 |
++------+--------+------------+------+
+
+41-select * from orders o where amt<(select max(amt) from customer c,orders o where c.city='goa' and c.cnum=o.cnum);
++------+--------+------------+------+
+| onum | amt    | odate      | cnum |
++------+--------+------------+------+
+| 3001 | 156.87 | 1998-12-06 | 2001 |
+| 3002 | 576.98 | 1989-05-06 | 2002 |
+| 3003 | 321.23 | 1996-12-11 | 2003 |
+| 3004 | 116.98 | 1987-09-16 | 2004 |
+| 3005 | 456.23 | 1994-10-18 | 2007 |
+| 3006 | 986.18 | 1987-04-25 | 2005 |
+| 3007 | 231.98 | 1999-03-06 | 2001 |
+| 3008 | 234.86 | 1998-12-06 | 2001 |
+| 3009 | 736.98 | 1995-09-30 | 2007 |
++------+--------+------------+------+
+42-
+select * from orders a where amt>(select avg(amt)from orders b where a.cnum=b.cnum group by cnum);
++------+---------+------------+------+
+| onum | amt     | odate      | cnum |
++------+---------+------------+------+
+| 3007 |  231.98 | 1999-03-06 | 2001 |
+| 3008 |  234.86 | 1998-12-06 | 2001 |
+| 3009 |  736.98 | 1995-09-30 | 2007 |
+| 3010 | 7000.00 | 1999-10-30 | 2004 |
++------+---------+------------+------+
+43-select c.city,max(c.rating)from customer c group by c.city;
++------------+---------------+
+| city       | max(c.rating) |
++------------+---------------+
+| Berlin     |           200 |
+| Chicago    |           150 |
+| Goa        |           250 |
+| New Mexico |           110 |
+| Russia     |           100 |
+| San Diego  |           210 |
+| Texas      |           199 |
++------------+---------------+
+44- select s.snum,s.sname,c.cname,o.amt,s.comm*o.amt as Commision from salespeople s,customer c,orders o where s.snum=c.snum and c.cnum=o.cnum and c.rating>100;
++------+----------+---------+---------+-------------+
+| snum | sname    | cname   | amt     | Commision   |
++------+----------+---------+---------+-------------+
+| 1006 | Dean     | Jason   |  576.98 |  12116.5800 |
+| 1001 | Priyanka | Jared   |  321.23 |   3854.7600 |
+| 1005 | Lily     | Tony    |  116.98 |   1871.6800 |
+| 1005 | Lily     | Tony    | 7000.00 | 112000.0000 |
+| 1004 | Sam      | Danny   |  986.18 |  14792.7000 |
+| 1005 | Lily     | Charlie |  456.23 |   7299.6800 |
+| 1005 | Lily     | Charlie |  736.98 |  11791.6800 |
++------+----------+---------+---------+-------------+
+45- select count(*)from customer c where c.rating>(select avg(c1.rating)from customer c1 where c1.city='Russia');
++----------+
+| count(*) |
++----------+
+|        6 |
++----------+
+46-
+ select * from salespeople s,salespeople b order by s.snum=b.snum desc;
++------+----------+---------------+-------+------+----------+---------------+-------+
+| snum | sname    | city          | comm  | snum | sname    | city          | comm  |
++------+----------+---------------+-------+------+----------+---------------+-------+
+| 1002 | Sneha    | Mumbai        | 19.00 | 1002 | Sneha    | Mumbai        | 19.00 |
+| 1004 | Sam      | San Francisco | 15.00 | 1004 | Sam      | San Francisco | 15.00 |
+| 1006 | Dean     | New York      | 21.00 | 1006 | Dean     | New York      | 21.00 |
+| 1001 | Priyanka | London        | 12.00 | 1001 | Priyanka | London        | 12.00 |
+| 1003 | Pablo    | Colombia      | 13.00 | 1003 | Pablo    | Colombia      | 13.00 |
+| 1005 | Lily     | LA            | 16.00 | 1005 | Lily     | LA            | 16.00 |
+| 1007 | Aditya   | Delhi         | 25.00 | 1007 | Aditya   | Delhi         | 25.00 |
+| 1007 | Aditya   | Delhi         | 25.00 | 1001 | Priyanka | London        | 12.00 |
+| 1002 | Sneha    | Mumbai        | 19.00 | 1004 | Sam      | San Francisco | 15.00 |
+| 1004 | Sam      | San Francisco | 15.00 | 1006 | Dean     | New York      | 21.00 |
+| 1002 | Sneha    | Mumbai        | 19.00 | 1003 | Pablo    | Colombia      | 13.00 |
+| 1004 | Sam      | San Francisco | 15.00 | 1005 | Lily     | LA            | 16.00 |
+| 1006 | Dean     | New York      | 21.00 | 1007 | Aditya   | Delhi         | 25.00 |
+| 1002 | Sneha    | Mumbai        | 19.00 | 1001 | Priyanka | London        | 12.00 |
+| 1004 | Sam      | San Francisco | 15.00 | 1003 | Pablo    | Colombia      | 13.00 |
+| 1006 | Dean     | New York      | 21.00 | 1005 | Lily     | LA            | 16.00 |
+| 1004 | Sam      | San Francisco | 15.00 | 1002 | Sneha    | Mumbai        | 19.00 |
+| 1006 | Dean     | New York      | 21.00 | 1004 | Sam      | San Francisco | 15.00 |
+| 1001 | Priyanka | London        | 12.00 | 1007 | Aditya   | Delhi         | 25.00 |
+| 1004 | Sam      | San Francisco | 15.00 | 1001 | Priyanka | London        | 12.00 |
+| 1006 | Dean     | New York      | 21.00 | 1003 | Pablo    | Colombia      | 13.00 |
+| 1001 | Priyanka | London        | 12.00 | 1006 | Dean     | New York      | 21.00 |
+| 1006 | Dean     | New York      | 21.00 | 1002 | Sneha    | Mumbai        | 19.00 |
+| 1001 | Priyanka | London        | 12.00 | 1005 | Lily     | LA            | 16.00 |
+| 1003 | Pablo    | Colombia      | 13.00 | 1007 | Aditya   | Delhi         | 25.00 |
+| 1006 | Dean     | New York      | 21.00 | 1001 | Priyanka | London        | 12.00 |
+| 1001 | Priyanka | London        | 12.00 | 1004 | Sam      | San Francisco | 15.00 |
+| 1003 | Pablo    | Colombia      | 13.00 | 1006 | Dean     | New York      | 21.00 |
+| 1001 | Priyanka | London        | 12.00 | 1003 | Pablo    | Colombia      | 13.00 |
+| 1003 | Pablo    | Colombia      | 13.00 | 1005 | Lily     | LA            | 16.00 |
+| 1005 | Lily     | LA            | 16.00 | 1007 | Aditya   | Delhi         | 25.00 |
+| 1001 | Priyanka | London        | 12.00 | 1002 | Sneha    | Mumbai        | 19.00 |
+| 1003 | Pablo    | Colombia      | 13.00 | 1004 | Sam      | San Francisco | 15.00 |
+| 1005 | Lily     | LA            | 16.00 | 1006 | Dean     | New York      | 21.00 |
+| 1003 | Pablo    | Colombia      | 13.00 | 1002 | Sneha    | Mumbai        | 19.00 |
+| 1005 | Lily     | LA            | 16.00 | 1004 | Sam      | San Francisco | 15.00 |
+| 1007 | Aditya   | Delhi         | 25.00 | 1006 | Dean     | New York      | 21.00 |
+| 1003 | Pablo    | Colombia      | 13.00 | 1001 | Priyanka | London        | 12.00 |
+| 1005 | Lily     | LA            | 16.00 | 1003 | Pablo    | Colombia      | 13.00 |
+| 1007 | Aditya   | Delhi         | 25.00 | 1005 | Lily     | LA            | 16.00 |
+| 1005 | Lily     | LA            | 16.00 | 1002 | Sneha    | Mumbai        | 19.00 |
+| 1007 | Aditya   | Delhi         | 25.00 | 1004 | Sam      | San Francisco | 15.00 |
+| 1002 | Sneha    | Mumbai        | 19.00 | 1007 | Aditya   | Delhi         | 25.00 |
+| 1005 | Lily     | LA            | 16.00 | 1001 | Priyanka | London        | 12.00 |
+| 1007 | Aditya   | Delhi         | 25.00 | 1003 | Pablo    | Colombia      | 13.00 |
+| 1002 | Sneha    | Mumbai        | 19.00 | 1006 | Dean     | New York      | 21.00 |
+| 1007 | Aditya   | Delhi         | 25.00 | 1002 | Sneha    | Mumbai        | 19.00 |
+| 1002 | Sneha    | Mumbai        | 19.00 | 1005 | Lily     | LA            | 16.00 |
+| 1004 | Sam      | San Francisco | 15.00 | 1007 | Aditya   | Delhi         | 25.00 |
++------+----------+---------------+-------+------+----------+---------------+-------+
+
+47-select * from salespeople s where s.city in('london','LA');
++------+----------+--------+-------+
+| snum | sname    | city   | comm  |
++------+----------+--------+-------+
+| 1001 | Priyanka | London | 12.00 |
+| 1005 | Lily     | LA     | 16.00 |
++------+----------+--------+-------+
+48-select s.snum,s.sname,count(c.cnum)as Count from salespeople s,customer c where s.snum=c.snum group by s.snum having Count=1;
++------+----------+-------+
+| snum | sname    | Count |
++------+----------+-------+
+| 1001 | Priyanka |     1 |
+| 1004 | Sam      |     1 |
+| 1006 | Dean     |     1 |
++------+----------+-------+
+49-select a.snum,concat(a.cname,',',b.cname)as Customer_Pair from customer a,customer b  where a.snum=b.snum and a.cname!=b.cname order by a.snum;
++------+---------------+
+| snum | Customer_Pair |
++------+---------------+
+| 1003 | Ilya,Anna     |
+| 1003 | Anna,Ilya     |
+| 1005 | Tony,Charlie  |
+| 1005 | Charlie,Tony  |
++------+---------------+
+50-select * from  orders where amt>1000;
++------+---------+------------+------+
+| onum | amt     | odate      | cnum |
++------+---------+------------+------+
+| 3010 | 7000.00 | 1999-10-30 | 2004 |
++------+---------+------------+------+
+51-select o.onum,c.cname,o.cnum,o.amt,o.odate from customer c,orders o where c.cnum=o.cnum order by o.onum;
++------+---------+------+---------+------------+
+| onum | cname   | cnum | amt     | odate      |
++------+---------+------+---------+------------+
+| 3001 | Ilya    | 2001 |  156.87 | 1998-12-06 |
+| 3002 | Jason   | 2002 |  576.98 | 1989-05-06 |
+| 3003 | Jared   | 2003 |  321.23 | 1996-12-11 |
+| 3004 | Tony    | 2004 |  116.98 | 1987-09-16 |
+| 3005 | Charlie | 2007 |  456.23 | 1994-10-18 |
+| 3006 | Danny   | 2005 |  986.18 | 1987-04-25 |
+| 3007 | Ilya    | 2001 |  231.98 | 1999-03-06 |
+| 3008 | Ilya    | 2001 |  234.86 | 1998-12-06 |
+| 3009 | Charlie | 2007 |  736.98 | 1995-09-30 |
+| 3010 | Tony    | 2004 | 7000.00 | 1999-10-30 |
++------+---------+------+---------+------------+
+52-select distinct(s.snum),s.sname from salespeople s,customer c where s.city=c.city and s.snum!=c.snum;
+Empty set (0.08 sec)
+53-
+54-select * from orders o where odate like '1999-3-6' or '1999-10-30';
++------+---------+------------+------+
+| onum | amt     | odate      | cnum |
++------+---------+------------+------+
+| 3001 |  156.87 | 1998-12-06 | 2001 |
+| 3002 |  576.98 | 1989-05-06 | 2002 |
+| 3003 |  321.23 | 1996-12-11 | 2003 |
+| 3004 |  116.98 | 1987-09-16 | 2004 |
+| 3005 |  456.23 | 1994-10-18 | 2007 |
+| 3006 |  986.18 | 1987-04-25 | 2005 |
+| 3007 |  231.98 | 1999-03-06 | 2001 |
+| 3008 |  234.86 | 1998-12-06 | 2001 |
+| 3009 |  736.98 | 1995-09-30 | 2007 |
+| 3010 | 7000.00 | 1999-10-30 | 2004 |
++------+---------+------------+------+
+55-select o1.cnum,c.cname,concat(o1.onum,',',o2.onum)as Order_Pair from orders o1,orders o2 ,customer c where o1.cnum=o2.cnum and o1.onum!=o2.cnum and o1.cnum=c.cnum order by o1.cnum;
++------+---------+------------+
+| cnum | cname   | Order_Pair |
++------+---------+------------+
+| 2001 | Ilya    | 3008,3001  |
+| 2001 | Ilya    | 3007,3007  |
+| 2001 | Ilya    | 3001,3008  |
+| 2001 | Ilya    | 3001,3001  |
+| 2001 | Ilya    | 3008,3007  |
+| 2001 | Ilya    | 3007,3008  |
+| 2001 | Ilya    | 3007,3001  |
+| 2001 | Ilya    | 3001,3007  |
+| 2001 | Ilya    | 3008,3008  |
+| 2002 | Jason   | 3002,3002  |
+| 2003 | Jared   | 3003,3003  |
+| 2004 | Tony    | 3010,3004  |
+| 2004 | Tony    | 3004,3004  |
+| 2004 | Tony    | 3010,3010  |
+| 2004 | Tony    | 3004,3010  |
+| 2005 | Danny   | 3006,3006  |
+| 2007 | Charlie | 3009,3005  |
+| 2007 | Charlie | 3005,3005  |
+| 2007 | Charlie | 3009,3009  |
+| 2007 | Charlie | 3005,3009  |
++------+---------+------------+
+56-select * from customer where rating>(select max(rating)from customer where city='Chicago');
++------+---------+-----------+--------+------+
+| cnum | cname   | city      | rating | snum |
++------+---------+-----------+--------+------+
+| 2002 | Jason   | Berlin    |    200 | 1006 |
+| 2004 | Tony    | Goa       |    250 | 1005 |
+| 2005 | Danny   | Texas     |    199 | 1004 |
+| 2007 | Charlie | San Diego |    210 | 1005 |
++------+---------+-----------+--------+------+
+57-select c.cname,c.rating,c.city from customer c where rating>100 or city='Chicago';
++---------+--------+------------+
+| cname   | rating | city       |
++---------+--------+------------+
+| Jason   |    200 | Berlin     |
+| Jared   |    150 | Chicago    |
+| Tony    |    250 | Goa        |
+| Danny   |    199 | Texas      |
+| Anna    |    110 | New Mexico |
+| Charlie |    210 | San Diego  |
++---------+--------+------------+
+58-select c.* from customer c where c.snum=1001;
++------+-------+---------+--------+------+
+| cnum | cname | city    | rating | snum |
++------+-------+---------+--------+------+
+| 2003 | Jared | Chicago |    150 | 1001 |
++------+-------+---------+--------+------+
+59-select 
+60-select * from orders where amt is not null;
++------+---------+------------+------+
+| onum | amt     | odate      | cnum |
++------+---------+------------+------+
+| 3001 |  156.87 | 1998-12-06 | 2001 |
+| 3002 |  576.98 | 1989-05-06 | 2002 |
+| 3003 |  321.23 | 1996-12-11 | 2003 |
+| 3004 |  116.98 | 1987-09-16 | 2004 |
+| 3005 |  456.23 | 1994-10-18 | 2007 |
+| 3006 |  986.18 | 1987-04-25 | 2005 |
+| 3007 |  231.98 | 1999-03-06 | 2001 |
+| 3008 |  234.86 | 1998-12-06 | 2001 |
+| 3009 |  736.98 | 1995-09-30 | 2007 |
+| 3010 | 7000.00 | 1999-10-30 | 2004 |
++------+---------+------------+------+
+61-
+select a.sname,b.cname  from salespeople a join customer b on a.snum=b.snum and b.rating>200 order by sname,cname;
++-------+---------+
+| sname | cname   |
++-------+---------+
+| Lily  | Charlie |
+| Lily  | Tony    |
++-------+---------+
+62-select s.sname,s.comm*(sum(o.amt))as Commission from salespeople s,customer c,orders o where s.snum=c.snum and c.cnum=o.cnum group by s.snum;
++----------+-------------+
+| sname    | Commission  |
++----------+-------------+
+| Priyanka |   3854.7600 |
+| Pablo    |   8108.2300 |
+| Sam      |  14792.7000 |
+| Lily     | 132963.0400 |
+| Dean     |  12116.5800 |
++----------+-------------+
+63-select c.cname,c.city from customer c  where rating = (select rating from customer where cname='Jason')and c.cname!='Jason';
+Empty set (0.00 sec)
+64-select sname from salespeople where sname<any (select cname from customer where salespeople.snum=customer.snum);
++-------+
+| sname |
++-------+
+| Lily  |
+| Dean  |
++-------+
+65-select c.cnum,c.cname from customer c,orders o where o.amt>(select avg(amt)from orders)and c.cnum=o.cnum;
++------+-------+
+| cnum | cname |
++------+-------+
+| 2004 | Tony  |
++------+-------+
+66-select sum(amt)from orders;
++----------+
+| sum(amt) |
++----------+
+| 10818.29 |
++----------+
+67-select o.onum,o.amt,o.odate from orders o;
++------+---------+------------+
+| onum | amt     | odate      |
++------+---------+------------+
+| 3001 |  156.87 | 1998-12-06 |
+| 3002 |  576.98 | 1989-05-06 |
+| 3003 |  321.23 | 1996-12-11 |
+| 3004 |  116.98 | 1987-09-16 |
+| 3005 |  456.23 | 1994-10-18 |
+| 3006 |  986.18 | 1987-04-25 |
+| 3007 |  231.98 | 1999-03-06 |
+| 3008 |  234.86 | 1998-12-06 |
+| 3009 |  736.98 | 1995-09-30 |
+| 3010 | 7000.00 | 1999-10-30 |
++------+---------+------------+
+68-select count(*)from customer where rating is not null;
++----------+
+| count(*) |
++----------+
+|        7 |
++----------+
+69-select s.sname,c.cname,o.onum from salespeople s ,customer c,orders o where s.snum=c.snum and c.cnum=o.cnum;
++----------+---------+------+
+| sname    | cname   | onum |
++----------+---------+------+
+| Pablo    | Ilya    | 3001 |
+| Pablo    | Ilya    | 3007 |
+| Pablo    | Ilya    | 3008 |
+| Dean     | Jason   | 3002 |
+| Priyanka | Jared   | 3003 |
+| Lily     | Tony    | 3004 |
+| Lily     | Tony    | 3010 |
+| Sam      | Danny   | 3006 |
+| Lily     | Charlie | 3005 |
+| Lily     | Charlie | 3009 |
++----------+---------+------+
+70-elect s.sname,s.comm,c.cname from salespeople s,customer c where s.snum=c.snum and c.city='Texas';
++-------+-------+-------+
+| sname | comm  | cname |
++-------+-------+-------+
+| Sam   | 15.00 | Danny |
++-------+-------+-------+
+71-select * from salespeople s where city!=any(select city from customer c where s.snum=c.snum);
++------+----------+---------------+-------+
+| snum | sname    | city          | comm  |
++------+----------+---------------+-------+
+| 1001 | Priyanka | London        | 12.00 |
+| 1003 | Pablo    | Colombia      | 13.00 |
+| 1004 | Sam      | San Francisco | 15.00 |
+| 1005 | Lily     | LA            | 16.00 |
+| 1006 | Dean     | New York      | 21.00 |
++------+----------+---------------+-------+
+72-
+73-select c.cname,s.sname from salespeople s,customer c where s.snum=c.snum and s.sname in ('Priyanka','Aditya');
++-------+----------+
+| cname | sname    |
++-------+----------+
+| Jared | Priyanka |
++-------+----------+
+74-select o.odate, count(distinct(s.snum))from salespeople s,customer c,orders o where s.snum=c.snum and c.cnum=o.cnum group by o.odate;
++------------+-------------------------+
+| odate      | count(distinct(s.snum)) |
++------------+-------------------------+
+| 1987-04-25 |                       1 |
+| 1987-09-16 |                       1 |
+| 1989-05-06 |                       1 |
+| 1994-10-18 |                       1 |
+| 1995-09-30 |                       1 |
+| 1996-12-11 |                       1 |
+| 1998-12-06 |                       1 |
+| 1999-03-06 |                       1 |
+| 1999-10-30 |                       1 |
++------------+-------------------------+
+75- select s.sname,s.city,o.onum,o.odate,o.amt,c.cname from salespeople s,customer c,orders o where s.snum=c.snum and c.cnum=o.cnum and s.city='London';
++----------+--------+------+------------+--------+-------+
+| sname    | city   | onum | odate      | amt    | cname |
++----------+--------+------+------------+--------+-------+
+| Priyanka | London | 3003 | 1996-12-11 | 321.23 | Jared |
++----------+--------+------+------------+--------+-------+
+76-
+77-select s.snum,s.sname,count(c.cnum)as Customer_count from salespeople s,customer c,orders o where s.snum=c.snum and c.cnum=o.cnum group by s.snum having Customer_count>1;
++------+-------+----------------+
+| snum | sname | Customer_count |
++------+-------+----------------+
+| 1003 | Pablo |              3 |
+| 1005 | Lily  |              4 |
++------+-------+----------------+
+78-select s.snum,s.sname,count(c.cnum)as Customer_count from salespeople s,customer c,orders o where s.snum=c.snum and c.cnum=o.cnum group by s.snum having Customer_count>1;
++------+-------+----------------+
+| snum | sname | Customer_count |
++------+-------+----------------+
+| 1003 | Pablo |              3 |
+| 1005 | Lily  |              4 |
++------+-------+----------------+
+79-select * from customer where cname like'C%';
++------+---------+-----------+--------+------+
+| cnum | cname   | city      | rating | snum |
++------+---------+-----------+--------+------+
+| 2007 | Charlie | San Diego |    210 | 1005 |
++------+---------+-----------+--------+------+
+80-select c.city,max(c.rating)from customer c group by c.city;
++------------+---------------+
+| city       | max(c.rating) |
++------------+---------------+
+| Berlin     |           200 |
+| Chicago    |           150 |
+| Goa        |           250 |
+| New Mexico |           110 |
+| Russia     |           100 |
+| San Diego  |           210 |
+| Texas      |           199 |
++------------+---------------+
+81-select distinct(s.snum)from salespeople s,customer c,orders o where s.snum=c.snum and c.cnum=o.cnum;
++------+
+| snum |
++------+
+| 1001 |
+| 1003 |
+| 1004 |
+| 1005 |
+| 1006 |
++------+
+82-select c.rating,c.cnum from customer c order by c.rating desc;
++--------+------+
+| rating | cnum |
++--------+------+
+|    250 | 2004 |
+|    210 | 2007 |
+|    200 | 2002 |
+|    199 | 2005 |
+|    150 | 2003 |
+|    110 | 2006 |
+|    100 | 2001 |
++--------+------+
+83-select avg(comm)from salespeople where city='london';
++-----------+
+| avg(comm) |
++-----------+
+| 12.000000 |
++-----------+
+84-select o.* from orders o where o.cnum in (select cnum from customer where snum=(select snum from customer where cname='Tony'));
++------+---------+------------+------+
+| onum | amt     | odate      | cnum |
++------+---------+------------+------+
+| 3004 |  116.98 | 1987-09-16 | 2004 |
+| 3010 | 7000.00 | 1999-10-30 | 2004 |
+| 3005 |  456.23 | 1994-10-18 | 2007 |
+| 3009 |  736.98 | 1995-09-30 | 2007 |
++------+---------+------------+------+
+85-select * from salespeople where comm between 10.0 and 12.0;
++------+----------+--------+-------+
+| snum | sname    | city   | comm  |
++------+----------+--------+-------+
+| 1001 | Priyanka | London | 12.00 |
++------+----------+--------+-------+
+86-select * from salespeople where comm>10.0 and city='London';
++------+----------+--------+-------+
+| snum | sname    | city   | comm  |
++------+----------+--------+-------+
+| 1001 | Priyanka | London | 12.00 |
++------+----------+--------+-------+
+87-select * from orders where (amt<1000 or not (odate=10/30/1999 and cnum>2003));
++------+---------+------------+------+
+| onum | amt     | odate      | cnum |
++------+---------+------------+------+
+| 3001 |  156.87 | 1998-12-06 | 2001 |
+| 3002 |  576.98 | 1989-05-06 | 2002 |
+| 3003 |  321.23 | 1996-12-11 | 2003 |
+| 3004 |  116.98 | 1987-09-16 | 2004 |
+| 3005 |  456.23 | 1994-10-18 | 2007 |
+| 3006 |  986.18 | 1987-04-25 | 2005 |
+| 3007 |  231.98 | 1999-03-06 | 2001 |
+| 3008 |  234.86 | 1998-12-06 | 2001 |
+| 3009 |  736.98 | 1995-09-30 | 2007 |
+| 3010 | 7000.00 | 1999-10-30 | 2004 |
++------+---------+------------+------+
+88-select min(amt)from orders o group by cnum;
++----------+
+| min(amt) |
++----------+
+|   156.87 |
+|   576.98 |
+|   321.23 |
+|   116.98 |
+|   986.18 |
+|   456.23 |
++----------+
+
+89-select min(cname)from customer where cname like 'J%';
++------------+
+| min(cname) |
++------------+
+| Jared      |
++------------+
+90-select count(distinct(city))from customer where city is not null;
++-----------------------+
+| count(distinct(city)) |
++-----------------------+
+|                     7 |
++-----------------------+
+91-select avg(amt)from orders;
++-------------+
+| avg(amt)    |
++-------------+
+| 1081.829000 |
++-------------+
+92-select * from orderswhere not(odate=12/11/1996 or snum>1006)and amt>=1500);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not(odate=12/11/1996 or snum>1006)and amt>=1500)' at line 1
+93-select * from customer where city!='texas' and rating>200;
++------+---------+-----------+--------+------+
+| cnum | cname   | city      | rating | snum |
++------+---------+-----------+--------+------+
+| 2004 | Tony    | Goa       |    250 | 1005 |
+| 2007 | Charlie | San Diego |    210 | 1005 |
++------+---------+-----------+--------+------+
+94-select snum,sname,city,comm from salespeople where (comm>12.0 or comm<14.0)
+    -> 
+    -> ;
++------+----------+---------------+-------+
+| snum | sname    | city          | comm  |
++------+----------+---------------+-------+
+| 1001 | Priyanka | London        | 12.00 |
+| 1002 | Sneha    | Mumbai        | 19.00 |
+| 1003 | Pablo    | Colombia      | 13.00 |
+| 1004 | Sam      | San Francisco | 15.00 |
+| 1005 | Lily     | LA            | 16.00 |
+| 1006 | Dean     | New York      | 21.00 |
+| 1007 | Aditya   | Delhi         | 25.00 |
++------+----------+---------------+-------+
+95-select * from orders where not((odate=10/18/94 and snum>1002)or amt>2000);
+ERROR 1054 (42S22): Unknown column 'snum' in 'where clause'
+96- select s.sname,s.city as Salesperson_City, c.cname,c.city as Customer_city from salespeople s,customer c where s.snum=c.snum and s.city!=c.city;
++----------+------------------+---------+---------------+
+| sname    | Salesperson_City | cname   | Customer_city |
++----------+------------------+---------+---------------+
+| Pablo    | Colombia         | Ilya    | Russia        |
+| Dean     | New York         | Jason   | Berlin        |
+| Priyanka | London           | Jared   | Chicago       |
+| Lily     | LA               | Tony    | Goa           |
+| Sam      | San Francisco    | Danny   | Texas         |
+| Pablo    | Colombia         | Anna    | New Mexico    |
+| Lily     | LA               | Charlie | San Diego     |
++----------+------------------+---------+---------------+
+97-select s.sname,s.comm,c.cname,c.rating from salespeople s,customer c where s.snum=c.snum and s.comm>11.0 and c.rating<250;
++----------+-------+---------+--------+
+| sname    | comm  | cname   | rating |
++----------+-------+---------+--------+
+| Pablo    | 13.00 | Ilya    |    100 |
+| Dean     | 21.00 | Jason   |    200 |
+| Priyanka | 12.00 | Jared   |    150 |
+| Sam      | 15.00 | Danny   |    199 |
+| Pablo    | 13.00 | Anna    |    110 |
+| Lily     | 16.00 | Charlie |    210 |
++----------+-------+---------+--------+
+98-
+102-select * from customer order by rating desc;
++------+---------+------------+--------+------+
+| cnum | cname   | city       | rating | snum |
++------+---------+------------+--------+------+
+| 2004 | Tony    | Goa        |    250 | 1005 |
+| 2007 | Charlie | San Diego  |    210 | 1005 |
+| 2002 | Jason   | Berlin     |    200 | 1006 |
+| 2005 | Danny   | Texas      |    199 | 1004 |
+| 2003 | Jared   | Chicago    |    150 | 1001 |
+| 2006 | Anna    | New Mexico |    110 | 1003 |
+| 2001 | Ilya    | Russia     |    100 | 1003 |
++------+---------+------------+--------+------+
+103-select c.cname,o.odate from customer c,orders o where c.cnum=o.cnum and c.cname='Danny';
++-------+------------+
+| cname | odate      |
++-------+------------+
+| Danny | 1987-04-25 |
++-------+------------+
+104-select a.sname,a.comm,b.sname,b.comm from salespeople a,salespeople b where a.comm=b.comm and a.snum!=b.snum;
+Empty set (0.10 sec)
+105-select s.sname, o.odate,o.onum from salespeople s,customer c,orders o where s.snum=c.snum and c.cnum=o.cnum and o.odate not between '1999-3-6' and '1999-10-30';
++----------+------------+------+
+| sname    | odate      | onum |
++----------+------------+------+
+| Pablo    | 1998-12-06 | 3001 |
+| Dean     | 1989-05-06 | 3002 |
+| Priyanka | 1996-12-11 | 3003 |
+| Lily     | 1987-09-16 | 3004 |
+| Lily     | 1994-10-18 | 3005 |
+| Sam      | 1987-04-25 | 3006 |
+| Pablo    | 1998-12-06 | 3008 |
+| Lily     | 1995-09-30 | 3009 |
++----------+------------+------+
+106-selec(distinct(s.snum))from salespeople s,customer c,orders o where s.snum=c.snum and c.cnum=o.cnum;
++-------------------------+
+| count(distinct(s.snum)) |
++-------------------------+
+|                       5 |
++-------------------------+
+107- select count(distinct(c.cnum))from customer c,orders o where c.cnum=o.cnum;
++-------------------------+
+| count(distinct(c.cnum)) |
++-------------------------+
+|                       6 |
++-------------------------+
+108-
+109-select s.sname,(s.comm*sum(o.amt))as Income from salespeople s,customer c,orders o where s.snum=c.snum and c.cnum=o.cnum group by s.snum order by Income desc;
++----------+-------------+
+| sname    | Income      |
++----------+-------------+
+| Lily     | 132963.0400 |
+| Sam      |  14792.7000 |
+| Dean     |  12116.5800 |
+| Pablo    |   8108.2300 |
+| Priyanka |   3854.7600 |
++----------+-------------+
+110-select c.cname,o.cnum,sum(o.amt)as TotalAmount from customer c,orders o where c.cnum=o.cnum group by o.cnum order by TotalAmount limit 1;
++-------+------+-------------+
+| cname | cnum | TotalAmount |
++-------+------+-------------+
+| Jared | 2003 |      321.23 |
++-------+------+-------------+
+
+111-
+112-select distinct a.cname, b.cname, a.rating from customer a,customer b where a.rating = b.rating;
++---------+---------+--------+
+| cname   | cname   | rating |
++---------+---------+--------+
+| Ilya    | Ilya    |    100 |
+| Jason   | Jason   |    200 |
+| Jared   | Jared   |    150 |
+| Tony    | Tony    |    250 |
+| Danny   | Danny   |    199 |
+| Anna    | Anna    |    110 |
+| Charlie | Charlie |    210 |
++---------+---------+--------+
+
+113-select * from orders where amt>(select avg(amt) from orders where odate='1996-12-11');
++------+---------+------------+------+
+| onum | amt     | odate      | cnum |
++------+---------+------------+------+
+| 3002 |  576.98 | 1989-05-06 | 2002 |
+| 3005 |  456.23 | 1994-10-18 | 2007 |
+| 3006 |  986.18 | 1987-04-25 | 2005 |
+| 3009 |  736.98 | 1995-09-30 | 2007 |
+| 3010 | 7000.00 | 1999-10-30 | 2004 |
++------+---------+------------+------+
+
+114-select * from orders where amt>(select avg(amt)from orders);
++------+---------+------------+------+
+| onum | amt     | odate      | cnum |
++------+---------+------------+------+
+| 3010 | 7000.00 | 1999-10-30 | 2004 |
++------+---------+------------+------+
+115-select * from customer where rating >(select avg(rating) from customer where city='Texas');
++------+---------+-----------+--------+------+
+| cnum | cname   | city      | rating | snum |
++------+---------+-----------+--------+------+
+| 2002 | Jason   | Berlin    |    200 | 1006 |
+| 2004 | Tony    | Goa       |    250 | 1005 |
+| 2007 | Charlie | San Diego |    210 | 1005 |
++------+---------+-----------+--------+------+
+
+116-select s.sname,sum(o.amt)as Total from salespeople s,customer c,orders o where s.snum=c.snum and c.cnum=o.cnum group by s.sname having Total>(select max(amt)from orders);
++-------+---------+
+| sname | Total   |
++-------+---------+
+| Lily  | 8310.19 |
++-------+---------+
+
+117-
+118-select s.snum,s.sname from salespeople s,customer c where s.city=c.city and s.snum!=c.snum;
+Empty set (0.00 sec)
+
+119-select c.cnum,c.cname, sum(o.amt) as Total from customer c,orders o where c.cnum=o.cnum group by c.cnum order by Total limit 1;
++------+-------+--------+
+| cnum | cname | Total  |
++------+-------+--------+
+| 2003 | Jared | 321.23 |
++------+-------+--------+
+
+120-select s.snum,s.sname,c.cname from salespeople s,customer c where s.snum=s.snum and c.city='Berlin';
++------+----------+-------+
+| snum | sname    | cname |
++------+----------+-------+
+| 1001 | Priyanka | Jason |
+| 1002 | Sneha    | Jason |
+| 1003 | Pablo    | Jason |
+| 1004 | Sam      | Jason |
+| 1005 | Lily     | Jason |
+| 1006 | Dean     | Jason |
+| 1007 | Aditya   | Jason |
++------+----------+-------+
+
+121-
+122-select sum(amt)from orders a,customer c where a.cnum =c.cnum and (c.city='Texas'or'Goa');
++----------+
+| sum(amt) |
++----------+
+|   986.18 |
++----------+
+
+123-
+124-
+125-select sum(amt)from orders;
++----------+
+| sum(amt) |
++----------+
+| 10818.29 |
++----------+
+
+-------------------------------------------------------------------------------------------------------------------
+
+53-select * from customer c where c.rating>=any(select c1.rating from customer c1 where snum=(select snum from salespeople where  sname='Dean'));
++------+---------+-----------+--------+------+
+| cnum | cname   | city      | rating | snum |
++------+---------+-----------+--------+------+
+| 2002 | Jason   | Berlin    |    200 | 1006 |
+| 2004 | Tony    | Goa       |    250 | 1005 |
+| 2007 | Charlie | San Diego |    210 | 1005 |
++------+---------+-----------+--------+------+
+59-select s.snum,s.sname,sum(o.amt) as Total from salespeople s ,customer c , orders o where s.snum=c.snum and c.cnum=o.cnum group by s.snum having Total>(select max(amt)from orders);
++------+-------+---------+
+| snum | sname | Total   |
++------+-------+---------+
+| 1005 | Lily  | 8310.19 |
++------+-------+---------+
+
+72-select s.snum as SNUM,s.sname,c.cname,c.cnum as CSNUM,s.city as SCITY,c.city as CCITTY from salespeople s,customer c where exists(select * from customer c1 where s.city=c1.city)and s.snum!=c.snum and s.city=c.city;
+Empty set (0.01 sec)
+
+98-select s1.sname,s1.city,s1.comm,s2.sname,s2.city,s2.comm from salespeople s1,salespeople s2 where s1.city=s2.city and s1.snum!=s2.snum and s1.comm!=s2.comm;
+Empty set (0.00 sec)
+
+99-
+100-
+101-
+108-
+111-
+117-
+121-
+123-
+124-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

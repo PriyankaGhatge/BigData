@@ -1,0 +1,81 @@
+﻿ASSIGNMENT 7
+
+
+Q]What is generic class ?
+-->Generics helps us to create a single class, which can be useful to operate on multiple data types. A class, interface or a method that operates on a parameterized type is called generics class,interface or method.Generics adds type safety. Generics only works on objects, not primitive types. Generics are nothing but parameterized types
+
+
+Q]What are the benefits of generic class?
+-->1.Type-safety : We can hold only a single type of objects in generics. It doesn’t allow to store other objects.
+2.Type casting is not required: There is no need to typecast the object.
+3.Enables programmers to implement generic algorithms
+4.Usability.
+
+
+
+
+Q]What is HashSet ?
+-->Java HashSet class is used to create a collection that uses a hash table for storage.
+A hash table stores information by using a mechanism called hashing. In hashing, the informational content of a key is used to determine a unique value, called its hash code.
+The hash code is then used as the index at which the data associated with the key is stored. The transformation of the key into its hash code is performed automatically.
+
+
+Q]What are the characteristics of HashSet ?
+-->1.HashSet stores the elements by using a mechanism called hashing.
+2.The HashSet class extends AbstractSet class which implements Set interface.
+3.HashSet doesn’t maintain any order, the elements would be returned in any random order.
+4.HashSet doesn’t allow duplicates. If you try to add a duplicate element in HashSet, the old value would be overwritten.
+5.HashSet allows null values however if you insert more than one nulls it would still return only one null value.
+6.HashSet is non-synchronized.
+
+
+Q]What are the advantages of HashSet ?
+-->1. Hashset can be traversed using Iterator.
+2.Hashset is completely object based
+3.HashSet object can be assigned explicitly with initial capacity and load factor.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q]What is the difference between List and Set ?
+-->
+List
+	Set
+	It allows you to store duplicates in the collection 
+
+
+	 Set doesn't allow any duplicates. 
+
+
+	List maintains insertion order of elements
+	It doesn't maintain any ordering
+	List is an ordered collection
+	 Set is unordered
+	Popular implementation of List interface in Java includes ArrayList, Vector and LinkedList.
+
+
+
+
+	Popular implementation of Set interface includes HashSet, TreeSet and LinkedHashSet.
+
+
+
+
+	
+
+
+
+Q]Application of HashSet in real life Software ?
+-->
+1..Supermarket- To start a search, accost an employee of said supermarket and inquire after the location of an article, say washing detergent. You'll receive the hashcode "aisle 14" or some such. When at the location of said hashbucket, you find all articles together. 
+The hashcode is marginally improved with additional information like "on the left", or "at the very end".
